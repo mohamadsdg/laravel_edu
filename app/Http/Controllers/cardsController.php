@@ -16,7 +16,7 @@ class cardsController extends Controller
     public function show(Card $card){ // when use route model binding pass model to method controller
 
         //$id
-//        $card = Card::find($id);
+//        $card = Card::findOrFail($id);
         return view('cards.show',compact('card'));
     }
 }
