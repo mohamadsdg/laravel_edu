@@ -26,5 +26,6 @@ Route::get('/', function () {
 Route::get('cont','pagesController@home');
 Route::get('about','pagesController@about');
 Route::get('card','cardsController@index');
-Route::get('card/{card}','cardsController@show');
+Route::get('card/{card}','cardsController@show'); // {card} name is wildcard
+Route::post('card/{card}/notes','NotesController@store');
 

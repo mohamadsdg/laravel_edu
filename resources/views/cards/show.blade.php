@@ -5,20 +5,29 @@
 @stop
 
 @section('main')
-    <div class="uk-flex uk-flex-center full-height uk-child-width-1-1" uk-grid >
-        <div>
+    <div class="row">
+        <div class="col-sm">
             <h1 class="uk-title">
                 {{$card->title}}
             </h1>
+            <ul class="list-group">
+                @foreach ($card->notes as $note)
+                    <li class="list-group-item">{{$note->body}}</li>
+                @endforeach
+            </ul>
+            <hr>
+            <h3>Add New Note</h3>
+            <form method="post" action="{{$card->id}}/notes">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                <div class="form-group">
+                    <textarea name="body"title="body" class="form-control"></textarea>
+                </div>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">Add Note</button>
+                </div>
+            </form>
+
         </div>
-       <div>
-           <h2 class="uk-title">Notes</h2>
-           <ul>
-               @foreach ($card->notes as $note)
-                   <li>{{$note->body}}</li>
-               @endforeach
-           </ul>
-       </div>
     </div>
 @stop
 
