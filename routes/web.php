@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', function () { 
+Route::get('/', function () {
     return view('welcome');
 });
 /*Route::get('about',function (){
@@ -23,9 +23,11 @@ Route::get('/', function () {
 
     return View::make('about', compact('people')); // used this syntax called facad View::make
 });*/
-Route::get('cont','pagesController@home');
-Route::get('about','pagesController@about');
-Route::get('card','cardsController@index');
-Route::get('card/{card}','cardsController@show'); // {card} name is wildcard
-Route::post('card/{card}/notes','NotesController@store');
+Route::get('cont', 'pagesController@home');
+Route::get('about', 'pagesController@about');
+Route::get('card', 'cardsController@index');
+Route::get('card/{card}', 'cardsController@show'); // {card} name is wildcard
+Route::post('card/{card}/notes', 'NotesController@store'); // save note
+Route::get('note/{note}/edit', 'NotesController@edit'); // show for edit note
+Route::patch('notes/{note}', 'NotesController@update'); // update note
 

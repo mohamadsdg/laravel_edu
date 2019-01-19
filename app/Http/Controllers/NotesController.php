@@ -14,9 +14,9 @@ class NotesController extends Controller
         //        return \Request::all(); // use notation class
         //        return request()->all();  // use notation method
 
-         $note = new Note;
-         $note->body = $request->body;
-         $card->notes()->save($note);
+        $note = new Note;
+        $note->body = $request->body;
+        $card->notes()->save($note);
 
 //        return \Redirect::to('url');          // :: name scope resolution operator
 //        return redirect()->to('url');     // -> associate class
@@ -45,7 +45,22 @@ class NotesController extends Controller
 //        $card->addNote($note);
 
 
-         return back();     // just back url
+        return back();     // just back url
 
+    }
+
+    public function edit(Note $note)
+    {
+        // $id
+//        $note = Note::find($id)->with('card')->get();
+//        return $note;
+        return view('cards.edit', compact('note'));
+    }
+
+    public function update(Note $note, Request $request)
+    {
+        $note->update($request->all());
+
+        return back();
     }
 }
