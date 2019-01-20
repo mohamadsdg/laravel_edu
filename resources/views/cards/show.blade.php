@@ -12,10 +12,13 @@
             </h1>
             <ul class="list-group">
                 @foreach ($card->notes as $note)
-                    <li class="list-group-item">
+                    <li class="list-group-item d-flex justify-content-between">
                         <a href="/note/{{$note->id}}/edit">
                             {{$note->body}}
                         </a>
+                        <span class="pull-right">
+                            {{$note->user->username}}
+                        </span>
                     </li>
                 @endforeach
             </ul>
@@ -24,7 +27,7 @@
             <form method="post" action="{{$card->id}}/notes">
                 <input type="hidden" name="_token" value="{{ csrf_token() }}">
                 <div class="form-group">
-                    <textarea name="body"title="body" class="form-control"></textarea>
+                    <textarea name="body" title="body" class="form-control"></textarea>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">Add Note</button>

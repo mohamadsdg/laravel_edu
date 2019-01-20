@@ -52,7 +52,7 @@ class NotesController extends Controller
     public function edit(Note $note)
     {
         // $id
-//        $note = Note::find($id)->with('card')->get();
+//        $note = Note::find($id)->with('card')->get(); //eager loading
 //        return $note;
         return view('cards.edit', compact('note'));
     }
