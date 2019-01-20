@@ -34,7 +34,7 @@
                     <button type="submit" class="btn btn-primary">Add Note</button>
                 </div>
             </form>
-
+            
             @if (count($errors))
                 <ul>
                     @foreach($errors->all() as $error)
