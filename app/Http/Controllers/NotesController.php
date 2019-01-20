@@ -13,9 +13,15 @@ class NotesController extends Controller
         //        return $request->all(); // use notation variable
         //        return \Request::all(); // use notation class
         //        return request()->all();  // use notation method
+        $this->validate($request,[
+            'body' => 'required|min:10'
+        ]);
+
 
         $note = new Note;
         $note->body = $request->body;
+//        $note->user_id = Auth::id();
+        $note->user_id = 1;
         $card->notes()->save($note);
 
 //        return \Redirect::to('url');          // :: name scope resolution operator

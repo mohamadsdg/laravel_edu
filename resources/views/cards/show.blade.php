@@ -25,14 +25,23 @@
             <hr>
             <h3>Add New Note</h3>
             <form method="post" action="{{$card->id}}/notes">
-                <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                {{--<input type="hidden" name="_token" value="{{ csrf_token() }}">--}}
+                {{csrf_field()}}
                 <div class="form-group">
-                    <textarea name="body" title="body" class="form-control"></textarea>
+                    <textarea name="body" title="body" class="form-control">{{old('body')}}</textarea>
                 </div>
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">Add Note</button>
                 </div>
             </form>
+
+            @if (count($errors))
+                <ul>
+                    @foreach($errors->all() as $error)
+                        <li>{{$error}}</li>
+                    @endforeach
+                </ul>
+            @endif
 
         </div>
     </div>
