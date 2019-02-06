@@ -1,0 +1,26 @@
+19_ middleware{
+mean-> mian afzar
+age mese piaz dar nazar begiri
+har laye az piaz mishe middleware ke baraye inke dastresi dashte bashii be
+app bayad az un layeha (middleware) oboor koni
+va hatta baraye residan be laye badii bayad az laye ghabli ham abor koni
+yani yejor selsele var hastesh .
+- to har middleware method handle vojod dare ke in hamon laye piazee ke next va reguest migire
+ next mige boro laye badii
+
+1- $middleware in daste az middleware ke to kernel hast baraye tame http has
+2- $middlewareGroups(to kernel hast) in ye daste az middleware hastesh ke mitoni be route ya routes haE azash rad beshan
+    Route::group(['middleware' => 'web'], function () {
+        Auth::routes();
+        Route::get('/home', 'HomeController@index')->name('home');
+    });
+3- $routeMiddleware(to kernel hast) in ye dasteEye ke mitonii to har tak route ya controller estefade koni
+    Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+    public function __construct()
+        {
+            $this->middleware('auth');
+        }
+}
+-----
+khodemonam mitonim middle ware tarif konim baad berim harja to kernel khastim ezafe konim
+ta betonim route haro hedayat konim to middleware ke sakhtim

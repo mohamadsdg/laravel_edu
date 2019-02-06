@@ -13,7 +13,10 @@ class HomeController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('admin');
+//        $this->middleware('auth');
+//        $this->middleware('auth', ['only' => ['index']]); // set middleware for each method
+//        $this->middleware('auth', ['except' => ['index']]); // unset middleware for each method
     }
 
     /**

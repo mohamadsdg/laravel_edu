@@ -13,7 +13,10 @@
 
 Route::get('/', function () {
     return view('welcome');
-});
-Auth::routes();
+})->name('start');
 
-Route::get('/home',  'HomeController@index')->name('home');
+Route::group(['middleware' => 'web'], function () {
+    Auth::routes();
+    Route::get('/home', 'HomeController@index')->name('home');
+//    Route::get('/home', 'HomeController@index')->name('home')->middleware('auth');
+});
