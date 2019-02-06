@@ -19,6 +19,9 @@ class CreateNotesTable extends Migration
             $table->integer('card_id')->unsigned()->index();
             $table->text('body');
             $table->timestamps();
+
+//            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+//            $table->foreign('card_id')->references('id')->on('cards')->onDelete('cascade');
         });
     }
 
