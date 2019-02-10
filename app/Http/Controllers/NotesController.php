@@ -51,6 +51,7 @@ class NotesController extends Controller
 //        $card->addNote($note);
 
 
+
         return back();     // just back url
 
     }
