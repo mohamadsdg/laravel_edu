@@ -1,1 +1,13 @@
 21- session/partial/helpers/flash
+flash() ---> this will keep for one request
+put() ---> this will keep it in the session
+
+session(['key' => 'value']); // put
+session()->put('key','value') // put
+
+session()->get('status') // for get session
+session('status') // for get session | if not exist return null
+
+** php artisan dump-autoload miad yebar dg un filehaE ke bayad automatic load beshe
+ro az ro composer mizase "autoload":{}... ke mitoni inja address file helper khodeto bedii
+----------------------------------------------------------------

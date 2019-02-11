@@ -24,8 +24,19 @@ class NotesController extends Controller
         $note->user_id = 1;
         $card->notes()->save($note);
 
+        //////// Session /////////
+        //Session::flash('status', 'Task was successful!'); // scope resolution operator
+        //$request->session()->flash('status', 'Task was successful!');
+        session()->flash('status', 'Task was successful!');
+//        session(['status' =>'Task was successful!']);
+//        session()->put('status' ,'Task was successful!');
+//        session()->forget('status');
+
+        //////// End Session /////////
+
+
 //        return \Redirect::to('url');          // :: name scope resolution operator
-//        return redirect()->to('url');     // -> associate class
+//        return redirect()->to('url');     // -> associate class or helper
 //        return redirect('url');     // :|
 
         //save data (way1)
