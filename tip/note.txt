@@ -11,3 +11,42 @@ session('status') // for get session | if not exist return null
 ** php artisan dump-autoload miad yebar dg un filehaE ke bayad automatic load beshe
 ro az ro composer mizase "autoload":{}... ke mitoni inja address file helper khodeto bedii
 ----------------------------------------------------------------
+23- many to many
+1)  ma kolan dos nadaram ziaad be migrate das bezanim chon vaghti
+    table ha por bashe age migrate das bokhore
+    vase in ke age bekhaym refresh konim migrate ro data lost darim
+    pas vase hamin age taghiri dashtim to migrate haye badii anjamesh midim
+
+2)  va vase fk doros karedan bayad avan engin DB ro bokonim InnoDB
+    badesh bayad havasemon bashe zamani ke mikhad fk sakhte beshe
+    eshare nadashte bashe be table E ke hanuz sakhte nashode
+    pas avaal bayad table ha sakhte beshe bad age fk dashrim ejra beshe
+    vase hamin mamolan migrate Fk ro akhar mizarim chon zamani ke dare migrate mishe Err nakhorim
+
+3) baraye tarif table miani(pivot table) vaghti many to many darim
+    esmesho az convention alphabetical (note_tag) estefade konim behtare
+    hala mitoni vase piviot ham migrate besazii ya age naskhasti to migration ye az tarafein
+    pivot mitoni besazii
+4) vaghti ke nakhay az convention alphabetic estefade koni bayad khodet be laravel begi
+    ke table pivot am chie fk am chie relation key man chie
+     $this->belongsToMany(Tag::class,'table_name(pivot)','col1_identifier (foreignPivotKey)','col1_identifier (relatedPivotKey)');
+
+     ///==> laravel convention
+     Schema::create('note_tag', function (Blueprint $table) {
+         $table->integer('note_id')->unsigned()->index();
+         $table->integer('tag_id')->unsigned()->index();
+     });
+
+     $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+     //controller
+     return $this->belongsToMany(Tag::class);
+
+    ///==>without laravel convention
+    Schema::create('sdg_ba-tag', function (Blueprint $table) {
+         $table->integer('sdg_id')->unsigned()->index();
+         $table->integer('ba-tag')->unsigned()->index();
+     });
+     $table->foreign('sdg_id')->references('id')->on('users')->onDelete('cascade');
+
+     //controller
+     $this->belongsToMany(Tag::class,'sdg_ba-tag'','sdg_id','ba-tag');

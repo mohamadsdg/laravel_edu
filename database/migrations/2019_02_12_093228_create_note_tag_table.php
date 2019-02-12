@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Schema;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Database\Migrations\Migration;
 
-class CreateNotesTable extends Migration
+class CreateNoteTagTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,10 @@ class CreateNotesTable extends Migration
      */
     public function up()
     {
-        Schema::create('notes', function (Blueprint $table) {
-            $table->increments('id');
-            $table->integer('user_id')->unsigned()->index();
-            $table->integer('card_id')->unsigned()->index();
-            $table->text('body');
-            $table->timestamps();
+        // used convention alphabetical for pivot table (note_tag) // ABCDEFGHIJKLM(N)OPQRS(T)WXYZ
+        Schema::create('note_tag', function (Blueprint $table) {
+            $table->integer('note_id')->unsigned()->index();
+            $table->integer('tag_id')->unsigned()->index();
         });
     }
 
@@ -29,6 +27,6 @@ class CreateNotesTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('notes');
+        Schema::dropIfExists('note_tag');
     }
 }
