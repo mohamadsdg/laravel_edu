@@ -50,3 +50,7 @@ ro az ro composer mizase "autoload":{}... ke mitoni inja address file helper kho
 
      //controller
      $this->belongsToMany(Tag::class,'sdg_ba-tag'','sdg_id','ba-tag');
+
+
+----------------------------------------------------------------
+24- attach detach

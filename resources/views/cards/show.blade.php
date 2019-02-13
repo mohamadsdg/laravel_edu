@@ -30,11 +30,21 @@
                 <div class="form-group">
                     <textarea name="body" title="body" class="form-control">{{old('body')}}</textarea>
                 </div>
+                {{$tag->name}}
+                <div class="form-group">
+                    <label for="select_tag">choose Tag</label>
+                    <select class="form-control" id="select_tag" multiple name="tag">
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                    </select>
+                </div>
+
                 <div class="form-group">
                     <button type="submit" class="btn btn-primary">Add Note</button>
                 </div>
             </form>
-            
+
             @if (count($errors))
                 <ul>
                     @foreach($errors->all() as $error)
