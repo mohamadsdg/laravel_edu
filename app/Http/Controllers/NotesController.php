@@ -31,8 +31,13 @@ class NotesController extends Controller
 //        session(['status' =>'Task was successful!']);
 //        session()->put('status' ,'Task was successful!');
 //        session()->forget('status');
-
         //////// End Session /////////
+
+        //////// Attach Detach /////////
+        $tagID = $request->tag ; //return array
+        $note->tags()->attach($tagID);
+
+        /////// END Attach Detach //////
 
 
 //        return \Redirect::to('url');          // :: name scope resolution operator

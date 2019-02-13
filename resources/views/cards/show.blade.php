@@ -30,13 +30,13 @@
                 <div class="form-group">
                     <textarea name="body" title="body" class="form-control">{{old('body')}}</textarea>
                 </div>
-                {{$tag->name}}
+
                 <div class="form-group">
                     <label for="select_tag">choose Tag</label>
-                    <select class="form-control" id="select_tag" multiple name="tag">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
+                    <select class="form-control" id="select_tag" multiple name="tag[]">
+                        @foreach($tags as $tag)
+                            <option value="{{$tag->id}}">{{$tag->name}}</option>
+                        @endforeach
                     </select>
                 </div>
 

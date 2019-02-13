@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use DB;
 use App\Card;
+use App\Tag;
 
 
 class cardsController extends Controller
@@ -23,8 +24,8 @@ class cardsController extends Controller
 //          return Card::with('notes.user')->find(1); //eager Loading
 //          return $card ->load('notes.user'); //eager Loading same ==> return Card::with('notes.user')->find(1) but dynamic find fuck
         $card->load('notes.user'); // dynamic find because instance $card (fuuuuuuuuck)
-        $tag->all();
+        $tags = Tag::all();
 
-        return view('cards.show', compact('card', 'tag'));
+        return view('cards.show', compact('card', 'tags'));
     }
 }

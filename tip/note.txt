@@ -54,3 +54,4 @@ ro az ro composer mizase "autoload":{}... ke mitoni inja address file helper kho
 
 ----------------------------------------------------------------
 24- attach detach
+1) be attach bayad ye array pas bedi ke biad relation many to many ro por kone
