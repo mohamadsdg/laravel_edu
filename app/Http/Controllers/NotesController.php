@@ -28,9 +28,9 @@ class NotesController extends Controller
         //Session::flash('status', 'Task was successful!'); // scope resolution operator
         //$request->session()->flash('status', 'Task was successful!');
         session()->flash('status', 'Task was successful!');
-//        session(['status' =>'Task was successful!']);
-//        session()->put('status' ,'Task was successful!');
-//        session()->forget('status');
+        //session(['status' =>'Task was successful!']);
+        //session()->put('status' ,'Task was successful!');
+        //session()->forget('status');
         //////// End Session /////////
 
         //////// Attach Detach /////////
@@ -77,6 +77,13 @@ class NotesController extends Controller
         // $id
 //        $note = Note::find($id)->with('card')->get(); //eager loading
 //        return $note;
+
+        //////// get tag /////////
+        $tag_all = $note->load('tags');
+//        dd($tag_all);
+
+        /////// END get tag //////
+
         return view('cards.edit', compact('note'));
     }
 
