@@ -55,3 +55,8 @@ ro az ro composer mizase "autoload":{}... ke mitoni inja address file helper kho
 ----------------------------------------------------------------
 24- attach detach
 1) be attach bayad ye array pas bedi ke biad relation many to many ro por kone
+    ba detach ham mitoni in relation ro az bein bebari
+2) sync miad kare in dotaro baham anjam mide masaln toye edit note ke mikhastim
+   edit tag dashte bashim bayad aval miomadim detach mikardam bad miomadim attach
+   mikardim hala vaghti to store sync estefade mikardim dg khodesh anjam midad
+   detach attach ro .

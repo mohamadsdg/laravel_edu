@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Tag;
 use Illuminate\Http\Request;
 use App\Card;
 use App\Note;
@@ -35,7 +36,9 @@ class NotesController extends Controller
 
         //////// Attach Detach /////////
         $tagID = $request->tag ; //return array
+//        $note->tags()->attach($tagID);
         $note->tags()->attach($tagID);
+//        $note->tags()->detach($tagID);
 
         /////// END Attach Detach //////
 
@@ -79,16 +82,22 @@ class NotesController extends Controller
 //        return $note;
 
         //////// get tag /////////
-        $tag_all = $note->load('tags');
-//        dd($tag_all);
+        $tags = Tag::all();
+//        return $tags;
+//        dd($tags);
 
         /////// END get tag //////
 
-        return view('cards.edit', compact('note'));
+        return view('cards.edit', compact('note','tags'));
     }
 
     public function update(Note $note, Request $request)
     {
+        $tagID = $request->tag ;
+//        $note->tags()->detach();
+//        $note->tags()->attach($tagID);
+        $note->tags()->sync($tagID);
+
         $note->update($request->all());
 
         return back();
